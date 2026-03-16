@@ -7,16 +7,17 @@ import os
 
 # Initialize LLM
 def get_llm():
-    """Initialize OpenAI LLM"""
     api_key = os.getenv("OPENAI_API_KEY")
     if not api_key:
-        raise ValueError("OPENAI_API_KEY not found in environment variables")
+        raise ValueError("OPENAI_API_KEY not found")
     
+    # Simplified initialization - no extra kwargs
     return ChatOpenAI(
         model="gpt-3.5-turbo",
         temperature=0.7,
-        api_key=api_key
+        openai_api_key=api_key  # Changed from api_key to openai_api_key
     )
+
 
 class DataCollectorAgent:
     """Gathers relevant business data based on query"""
